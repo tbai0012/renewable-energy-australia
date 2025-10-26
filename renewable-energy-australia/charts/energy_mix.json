@@ -1,17 +1,17 @@
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 400,
-  "data": {"url": "../data/renewable_by_state.csv"},
-  "mark": "bar",
-  "encoding": {
-    "x": {"field": "State", "type": "nominal", "title": "State"},
-    "y": {"aggregate": "sum", "field": "Generation_GWh", "type": "quantitative", "title": "Total Generation (GWh)"},
-    "color": {"field": "Energy_Source", "type": "nominal", "title": "Energy Source"},
-    "tooltip": [
-      {"field": "State"},
-      {"field": "Energy_Source"},
-      {"aggregate": "sum", "field": "Generation_GWh", "title": "GWh"}
-    ]
-  }
-}
+[
+  {"state": "New South Wales", "source": "Solar", "capacity": 2500},
+  {"state": "New South Wales", "source": "Wind", "capacity": 3000},
+  {"state": "New South Wales", "source": "Hydro", "capacity": 1500},
+
+  {"state": "Victoria", "source": "Solar", "capacity": 2000},
+  {"state": "Victoria", "source": "Wind", "capacity": 3000},
+  {"state": "Victoria", "source": "Hydro", "capacity": 1000},
+
+  {"state": "Queensland", "source": "Solar", "capacity": 1500},
+  {"state": "Queensland", "source": "Wind", "capacity": 2500},
+  {"state": "Queensland", "source": "Hydro", "capacity": 1000},
+
+  {"state": "South Australia", "source": "Solar", "capacity": 1000},
+  {"state": "South Australia", "source": "Wind", "capacity": 2500},
+  {"state": "South Australia", "source": "Hydro", "capacity": 500}
+]
