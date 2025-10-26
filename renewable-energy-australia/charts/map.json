@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/vega/vega-datasets/main/data/aus-states.topojson",
+    "format": {"type": "topojson", "feature": "states"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.STATE_NAME",
+      "from": {
+        "data": {"url": "../data/renewable_by_state.csv"},
+        "key": "State",
+        "fields": ["Renewable_Percent"]
+      }
+    }
+  ],
+  "projection": {"type": "equalEarth"},
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "color": {
+      "field": "Renewable_Percent",
+      "type": "quantitative",
+      "title": "% Renewable Energy",
+      "scale": {"scheme": "greens"}
+    },
+    "tooltip": [
+      {"field": "properties.STATE_NAME", "title": "State"},
+      {"field": "Renewable_Percent", "title": "% Renewable"}
+    ]
+  }
+}

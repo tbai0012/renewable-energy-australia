@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "data": {"url": "../data/renewable_by_state.csv"},
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal"},
+    "y": {"field": "Generation_GWh", "type": "quantitative", "title": "Generation (GWh)"},
+    "color": {"field": "Energy_Source", "type": "nominal", "title": "Energy Source"},
+    "tooltip": [
+      {"field": "Year"},
+      {"field": "Energy_Source"},
+      {"field": "Generation_GWh"}
+    ]
+  }
+}

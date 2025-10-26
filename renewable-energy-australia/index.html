@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renewable Energy in Australia</title>
+
+  <!-- Vega & Vega-Lite Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <h1>🌞 Renewable Energy in Australia</h1>
+      <p>This visualisation explores how renewable energy generation has evolved across Australia — comparing states, energy types, and trends over time.</p>
+    </div>
+
+    <div class="pure-u-1">
+      <h2>1. Renewable Energy Capacity by State (2024)</h2>
+      <div id="map"></div>
+    </div>
+
+    <div class="pure-u-1">
+      <h2>2. Growth of Renewable Energy Sources Over Time</h2>
+      <div id="trends"></div>
+    </div>
+
+    <div class="pure-u-1">
+      <h2>3. Energy Mix by State</h2>
+      <div id="energy-mix"></div>
+    </div>
+
+    <footer>
+      <p>Author: [Your Name], FIT3179 Data Visualisation 2 (Semester 2, 2025)</p>
+      <p>Data sources: Department of Climate Change, Energy, the Environment and Water (DCCEEW); Clean Energy Regulator; ABS</p>
+    </footer>
+  </div>
+
+  <script>
+    vegaEmbed('#map', 'charts/map.json');
+    vegaEmbed('#trends', 'charts/trends.json');
+    vegaEmbed('#energy-mix', 'charts/energy_mix.json');
+  </script>
+</body>
+</html>
