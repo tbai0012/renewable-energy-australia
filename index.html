@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Renewable Energy in Australia ☀️</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 40px;
+        }
+        .left-column, .right-column {
+            flex: 1;
+        }
+        .chart-container {
+            margin-bottom: 50px;
+        }
+        .text-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 50px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .image-box img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Renewable Energy Generation in Australia</h1>
+
+    <div class="container">
+        <div class="left-column">
+            <div class="chart-container">
+                <h2>1. Renewable Energy by State</h2>
+                <div id="chart-map"></div>
+            </div>
+            <div class="chart-container">
+                <h2>2. Renewable Energy Growth Over Time</h2>
+                <div id="chart-trends"></div>
+            </div>
+            <div class="chart-container">
+                <h2>3. Energy Mix by State</h2>
+                <div id="chart-energy-mix"></div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="text-box">
+                <h3>Renewable Energy by State</h3>
+                <p>This line chart displays the installed renewable energy capacity (MW) for New South Wales, Victoria, and Queensland from 2015 to 2019. It shows which states are leading in renewable adoption and regional trends over time.</p>
+            </div>
+            <div class="text-box">
+                <h3>Renewable Energy Growth Over Time</h3>
+                <p>This bar chart presents total renewable energy generation (GWh) in Australia from 2015 to 2019. It highlights the overall growth in renewable production, emphasizing the increasing adoption of clean energy nationwide.</p>
+            </div>
+            <div class="text-box">
+                <h3>Energy Mix by State</h3>
+                <p>This stacked bar chart breaks down each state's renewable energy capacity by source (solar, wind, hydro). It provides insight into which technologies dominate in each state and the diversity of renewable energy production.</p>
+            </div>
+
+            <!-- Image at the bottom -->
+            <div class="image-box">
+                <img src="images/renewable_energy_australia.png" alt="Renewable Energy in Australia">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Map / Renewable Energy by State
+        vegaEmbed('#chart-map', {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "description": "Renewable energy generation by state.",
+            "data": {
+                "values": [
+                    {"year": 2015, "state": "New South Wales", "capacity": 5000},
+                    {"year": 2016, "state": "New South Wales", "capacity": 5500},
+                    {"year": 2017, "state": "New South Wales", "capacity": 6000},
+                    {"year": 2018, "state": "New South Wales", "capacity": 6500},
+                    {"year": 2019, "state": "New South Wales", "capacity": 7000},
+
+                    {"year": 2015, "state": "Victoria", "capacity": 4000},
+                    {"year": 2016, "state": "Victoria", "capacity": 4500},
+                    {"year": 2017, "state": "Victoria", "capacity": 5000},
+                    {"year": 2018, "state": "Victoria", "capacity": 5500},
+                    {"year": 2019, "state": "Victoria", "capacity": 6000},
+
+                    {"year": 2015, "state": "Queensland", "capacity": 3000},
+                    {"year": 2016, "state": "Queensland", "capacity": 3500},
+                    {"year": 2017, "state": "Queensland", "capacity": 4000},
+                    {"year": 2018, "state": "Queensland", "capacity": 4500},
+                    {"year": 2019, "state": "Queensland", "capacity": 5000}
+                ]
+            },
+            "mark": "line",
+            "encoding": {
+                "x": {"field": "year", "type": "temporal", "title": "Year"},
+                "y": {"field": "capacity", "type": "quantitative", "title": "Capacity (MW)"},
+                "color": {"field": "state", "type": "nominal", "title": "State"},
+                "tooltip": [
+                    {"field": "year", "type": "temporal", "title": "Year"},
+                    {"field": "capacity", "type": "quantitative", "title": "Capacity (MW)"},
+                    {"field": "state", "type": "nominal", "title": "State"}
+                ]
+            }
+        });
+
+        // 2. Trends / Renewable Energy Growth Over Time
+        vegaEmbed('#chart-trends', {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "description": "Total renewable energy generation over time.",
+            "data": {
+                "values": [
+                    {"year": 2015, "generation": 12000},
+                    {"year": 2016, "generation": 13500},
+                    {"year": 2017, "generation": 15000},
+                    {"year": 2018, "generation": 16500},
+                    {"year": 2019, "generation": 18000}
+                ]
+            },
+            "mark": "bar",
+            "encoding": {
+                "x": {"field": "year", "type": "temporal", "title": "Year"},
+                "y": {"field": "generation", "type": "quantitative", "title": "Generation (GWh)"},
+                "tooltip": [
+                    {"field": "year", "type": "temporal", "title": "Year"},
+                    {"field": "generation", "type": "quantitative", "title": "Generation (GWh)"}
+                ]
+            }
+        });
+
+        // 3. Energy Mix by State
+        vegaEmbed('#chart-energy-mix', {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "description": "Energy mix by state.",
+            "data": {
+                "values": [
+                    {"state": "New South Wales", "source": "Solar", "capacity": 3000},
+                    {"state": "New South Wales", "source": "Wind", "capacity": 2500},
+                    {"state": "New South Wales", "source": "Hydro", "capacity": 1500},
+
+                    {"state": "Victoria", "source": "Solar", "capacity": 2500},
+                    {"state": "Victoria", "source": "Wind", "capacity": 2000},
+                    {"state": "Victoria", "source": "Hydro", "capacity": 1500},
+
+                    {"state": "Queensland", "source": "Solar", "capacity": 2000},
+                    {"state": "Queensland", "source": "Wind", "capacity": 2000},
+                    {"state": "Queensland", "source": "Hydro", "capacity": 1000}
+                ]
+            },
+            "mark": "bar",
+            "encoding": {
+                "x": {"field": "state", "type": "nominal", "title": "State"},
+                "y": {"field": "capacity", "type": "quantitative", "title": "Capacity (MW)"},
+                "color": {"field": "source", "type": "nominal", "title": "Energy Source"},
+                "tooltip": [
+                    {"field": "state", "type": "nominal", "title": "State"},
+                    {"field": "source", "type": "nominal", "title": "Energy Source"},
+                    {"field": "capacity", "type": "quantitative", "title": "Capacity (MW)"}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
