@@ -1,8 +1,0 @@
-State,Year,Energy_Source,Generation_GWh,Renewable_Percent
-New South Wales,2024,Other renewables,,40.4
-Victoria,2024,Other renewables,,39.5
-Queensland,2024,Other renewables,,26.6
-Western Australia,2024,Other renewables,,19.3
-South Australia,2024,Other renewables,,74.3
-Tasmania,2024,Hydro,,70.8
-Northern Territory,2024,Other renewables,,7.5
